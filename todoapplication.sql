@@ -21,9 +21,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `todoapplication`
 --
-
+CREATE DATABASE todoapplication;
 -- --------------------------------------------------------
 
+use todoapplication;
 --
 -- Table structure for table `statuscodes`
 --
