@@ -1,8 +1,34 @@
 <!DOCTYPE HTML>	
 <html>
 <head>
+<title>ToDoApplication View Task</title>
+<style>
+div.wrapper{
+	width: 900px;
+    margin: 0 auto;
+	padding: 10px 100px 10px 100px;
+	background-color: #e2edff;
+}
+body {
+	background-color: #93bbf9;
+}
+
+div.centerbuttons{
+	width: 200px;
+	margin: 0 auto;
+}
+
+.divider{
+    width:100px;
+    height:auto;
+    display:inline-block;
+}
+</style>
 </head>
 <body>
+<div class="wrapper">
+	<h1>Edit This Task</h1>
+	<hr>
 <?php
 	$servername = "localhost";
 	$username = "root";
@@ -39,14 +65,15 @@
 		
 	print 	
 	"<form action=\"update.php\" id=\"updateForm\">
-	<input type=\"hidden\" name=\"id\" value=\"" .$_GET["id"]."\">
-	Task Name: <input type=\"text\" name=\"name\" value=\"" . $nameMain . "\" required /> <br><br>
-	Description: <textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"updateForm\">" . $descriptMain . "</textarea> <br><br>
-	Due Date: <input type=\"date\" name=\"duedate\" value=\"" . $duedateMain . "\"> <br><br>
-	Status: 
+	<table><input type=\"hidden\" name=\"id\" value=\"" .$_GET["id"]."\">
+	<tr><td>Task Name:</td><td> <input type=\"text\" name=\"name\" value=\"" . $nameMain . "\" required /></td></tr>
+	<tr><td>Due Date:</td><td> <input type=\"date\" name=\"duedate\" value=\"" . $duedateMain . "\"> 
+	</td><td>Status: 
 	<select name=\"status\" form=\"updateForm\">"
 	. $optionshtml .
-	"</select>"
+	"</select></td>
+	<tr><td>Description:</td><td> <textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"updateForm\">" . $descriptMain . "</textarea></td></tr>
+	</table>"	
 
 	
 
@@ -69,8 +96,10 @@
 		}
 		
 		?></div>
-<input type="button" id="buttonadd" value="Add" onclick="addItem()">
+<br>
+Subtasks <input type="button" id="buttonadd" value="Add Subtask" onclick="addItem()" style="float: right;">
 <br><br>
+<hr>
 <p id="sublist">
 </p>
 <?php
@@ -111,10 +140,12 @@
 		
 		?>
 <br><br>
+<div class="centerbuttons">
 <input type="submit" value="Update Task" />
 <a href="index.php" onclick="javascript:return confirm('Do you want to return without saving?');">
 	<input type="button" value="Cancel" />
 </a>
+</div>
 <input type="hidden" name="statuscount" id="statuscount" form="updateForm" value ="<?php
 		$servername = "localhost";
 		$username = "root";
@@ -167,5 +198,6 @@
 		document.getElementById("sublistcount").value = window.count;
     }
 	</script>
+</div>
 </body>
 </html>
